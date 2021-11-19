@@ -43,26 +43,40 @@ let membri = [
 ];
 
 
-
-const member = document.getElementById("name").value;
-const role = document.getElementById("role").value;
-const image = document.getElementById("image").value;
-const add = document.getElementById("addMemberButton")
-
-const newMember = ({
-    "immagine": image,
-    "nome": member,
-    "posizione": role
-});
+const container = document.querySelector(".team-container");
+const add = document.getElementById("addMemberButton");
 
 add.addEventListener("click", function(){
+
+    const member = document.getElementById("name").value;
+    const role = document.getElementById("role").value;
+    const image = document.getElementById("image").value;
+    
+
+    const newMember = ({
+        "immagine": image,
+        "nome": member,
+        "posizione": role
+    });
+
+    container.innerHTML += `
+    <div class="team-card">
+        <div class="card-image">
+            <img src=${image}/>
+        </div>
+        <div class="card-text">
+            <h3>${member}</h3>
+            <p>${role}</p>
+        </div>
+    </div>
+    `
 
     membri.push(newMember);
     
 });
 
 
-const container = document.querySelector(".team-container");
+
 
 for (let i = 0; i < membri.length; i++){
     container.innerHTML += `
@@ -77,5 +91,7 @@ for (let i = 0; i < membri.length; i++){
     </div>
     `
 }
+
+
 
 console.log(membri);
